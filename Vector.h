@@ -1,5 +1,5 @@
-//#include <cstddef>
-//#include <iostream>
+#include <cstddef>
+#include <iostream>
 #ifndef VECTOR_H__
 #define VECTOR_H__
 
@@ -16,7 +16,7 @@ private:
 public:
     Vector(); // ok
     explicit Vector(const Vector& other);// ok
-    Vector(const std::size_t& size, const int* &initValue); // !! // ok
+    Vector(const std::size_t& size, const int* initValue); // !! // ok
     ~Vector(); //ok
     Vector& operator=(const Vector& other); // ok
 
@@ -27,18 +27,8 @@ public:
     void replace(const int& oldValue, const int& newValue);// ok
     
 
-    friend std::ostream& operator<<(std::ostream out, Vector& vector);
+    friend std::ostream& operator<<(std::ostream& out, Vector& vector);
     
 
 };
-
-std::ostream& operator<<(std::ostream out, Vector& vector) {
-    out << "Vector: "; 
-    for (std::size_t i = 0; i < vector.size(); i++) {
-            out << vector[i];
-        }
-    out << std::endl ;
-    return out;
-}
-
 #endif //VECTOR_H__

@@ -1,11 +1,11 @@
 #include "Vector.h"
 #include <iostream>
 
-Vector::Vector() : length(10), capacity(10) {
+Vector::Vector() : length(0), capacity(10) {
     data = new int[10];
 }
 
-explicit Vector::Vector(const std::size_t& size, const int* &initValue) {
+Vector::Vector(const std::size_t& size, const int* initValue) {
     if (size >=0 &&  initValue != nullptr) {
         capacity = length = size;
         data = new int[capacity];
@@ -14,13 +14,13 @@ explicit Vector::Vector(const std::size_t& size, const int* &initValue) {
         }
     } else {
         data = nullptr;
-        length = 10;
+        length = 0;
         capacity = 10;
     }
 }
 
 Vector::Vector(const Vector& other) {
-    if (other.length>0 && other.data != nullptr) {
+    if (other.length > 0 && other.data != nullptr) {
         length = other.length;
         capacity = other.capacity;
         data = new int[capacity];
@@ -52,9 +52,10 @@ void Vector::push_back(const int& value) {
     if (length < capacity) {
         data[length] = value;
         length++;
-    } else if ( length ==capacity ) {
+    } else if ( length == capacity ) {
         incCapacity();
         data[length] = value;
+        length++;
     }
 }
 
@@ -106,9 +107,9 @@ Vector& Vector::operator=(const Vector& other) {
     return *this;
 }
 
-std::ostream& operator<<(std::ostream out, Vector& vector) {
-    out << "Vector: "; 
+std::ostream& operator<<(std::ostream& out, Vector& vector) {
     for (std::size_t i = 0; i < vector.size(); i++) {
+            out.width(4);
             out << vector[i];
         }
     out << std::endl ;
