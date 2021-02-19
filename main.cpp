@@ -10,7 +10,6 @@ int main() {
     Vector v2(v1);
     v2.replace(7, 5);
     v2.replace(5, 99);
-    std::size_t size = 9;
     Vector v3(9 , row );
     std::cout << "index of found 99 is" << v2.find(99) << std::endl;
     v1.push_back(999);
