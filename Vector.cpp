@@ -40,7 +40,7 @@ Vector::~Vector() {
     }
 }
 
-int& Vector::operator[](const std::size_t& index) const {
+const int& Vector::operator[](const std::size_t& index) const {
   return data[index];
 }
 

@@ -20,7 +20,7 @@ public:
     ~Vector(); //ok
     Vector& operator=(const Vector& other); // ok
 
-    int& operator[](const std::size_t& index) const; // add const // ok
+    const int& operator[](const std::size_t& index) const; // add const // ok
     std::size_t size() const; // ok
     int find(const int& value) const;// ok
     void push_back(const int& value); // ok
