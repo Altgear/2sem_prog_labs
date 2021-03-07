@@ -10,8 +10,7 @@ private:
     std::size_t length;
     std::size_t capacity;
     void incCapacity(); // ok
-   
-
+    static const std::size_t defaultCapacity;
 
 public:
     Vector(); // ok
@@ -25,10 +24,7 @@ public:
     int find(const int& value) const;// ok
     void push_back(const int& value); // ok
     void replace(const int& oldValue, const int& newValue);// ok
-    
 
     friend std::ostream& operator<<(std::ostream& out, Vector& vector);
-    
-
 };
 #endif //VECTOR_H__

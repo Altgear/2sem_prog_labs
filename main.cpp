@@ -18,6 +18,9 @@ int main() {
     v3.size() << std::endl ;
     v3 = v1;
     std::cout <<"v3 = v1:" << std::endl << v3 << std::endl << v3.size() << std::endl;
+    Vector fail1(0,row);
+    Vector fail2(7, nullptr);
+    Vector fail3(fail1);
 
     return 0;
 };

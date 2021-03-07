@@ -1,26 +1,28 @@
 #include "Vector.h"
 #include <iostream>
 
-Vector::Vector() : length(0), capacity(10) {
-    data = new int[10];
+Vector::Vector() : length(0), capacity(defaultCapacity) {
+    data = new int[defaultCapacity];
 }
 
 Vector::Vector(const std::size_t& size, const int* initValue) {
-    if (size >=0 &&  initValue != nullptr) {
+    if (size != 0 && initValue != nullptr) {
         capacity = length = size;
         data = new int[capacity];
         for (std::size_t i = 0; i < length; i++) {
             data[i] = initValue[i];
         }
     } else {
-        data = nullptr;
         length = 0;
-        capacity = 10;
+        capacity = defaultCapacity;
+        data = new int[capacity];
+        std::cerr << "Param constructor error: vector size = 0 or data is invalid\n"
+        << "empty vector has been created\n";  
     }
 }
 
 Vector::Vector(const Vector& other) {
-    if (other.length > 0 && other.data != nullptr) {
+    if (other.length != 0 && other.data != nullptr) {
         length = other.length;
         capacity = other.capacity;
         data = new int[capacity];
@@ -28,9 +30,11 @@ Vector::Vector(const Vector& other) {
             data[i] = other.data[i];
         }
     } else {
-        data = nullptr;
-        length = 10;
-        capacity = 10;
+        length = 0;
+        capacity = defaultCapacity;
+        data = new int[capacity];
+        std::cerr << "Copy constructor error: vector size = 0 or data is invalid\n"
+        << "empty vector has been created\n";  
     }
 }
 
@@ -49,18 +53,18 @@ std::size_t Vector::size() const {
 }
 
 void Vector::push_back(const int& value) {
-    if (length < capacity) {
+    if (length != capacity) {
         data[length] = value;
         length++;
-    } else if ( length == capacity ) {
-        incCapacity();
+    } else {
+        incCapacity();  
         data[length] = value;
         length++;
     }
 }
 
  void Vector::incCapacity() {
-        capacity += 10;
+        capacity += defaultCapacity;
         int* tmpData = new int[capacity];
         for (std::size_t i = 0; i < length; i++) {
             tmpData[i] = data[i];
@@ -81,7 +85,7 @@ int Vector::find(const int& value) const {
 
 void Vector::replace(const int& oldValue, const int& newValue) {
     int result = find(oldValue);
-    if (result >=0) {
+    if (result >= 0) {
         data[result] = newValue;
     } else {
         std::cout << "No such element:"<< oldValue << std::endl;
@@ -115,3 +119,5 @@ std::ostream& operator<<(std::ostream& out, Vector& vector) {
     out << std::endl ;
     return out;
 }
+
+const std::size_t Vector::defaultCapacity = 10;
