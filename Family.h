@@ -1,18 +1,19 @@
-#ifndef FAMILY_HPP_
-#define FAMILY_HPP_
+#ifndef FAMILY_H_
+#define FAMILY_H_
 
 #include <string>
 
 class Family {
-    protected:
+    private:
         std::string family_name;
         unsigned int member_count;
         double monthly_income;
     
     public:
-        double calc_averege_income();
-        void print_stats();
-
+        double calc_averege_income() const;
+        void print_stats() const;
+        Family(std::string family_name_, unsigned int member_count_,
+        double monthly_income_);
 };
 
-#endif //FAMILY_HPP_
+#endif //FAMILY_H_
