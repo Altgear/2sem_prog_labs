@@ -1,3 +1,5 @@
+#include <iostream>
+
 double Family::calc_averege_income() {
     return monthly_income/member_count;
 }
