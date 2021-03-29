@@ -4,7 +4,7 @@
 #include <string>
 
 class Family {
-    private:
+    protected:
         std::string family_name;
         unsigned int member_count;
         double monthly_income;

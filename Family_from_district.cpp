@@ -6,7 +6,7 @@ double Family_from_district::calc_averege_income() const {
     double result;
     auto bonus = get_min_income();
     if (result < bonus)
-        result = Family::calc_averege_income() + bonus;
+        result = Family::calc_averege_income() + payout_amount;
     else
         result = Family::calc_averege_income();
     return result;

@@ -4,7 +4,7 @@
 #include <string>
 
 class District {
-    private:
+    protected:
         std::string district_name;
         unsigned int payout_amount;
         double min_average_monthly_income;
